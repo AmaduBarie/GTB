@@ -9,7 +9,7 @@ export default function Main() {
     <PaperProvider theme={theme}>
       <Appbar/>
       <Button icon={{ source: "add-a-photo", direction: 'rtl' }}>
-  Press me
+  Press me again
 </Button>
     </PaperProvider>
   );
