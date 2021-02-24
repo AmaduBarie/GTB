@@ -1,4 +1,3 @@
- 
 import { configureFonts, DefaultTheme } from "react-native-paper";
  import customFonts from   './font'
 
