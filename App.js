@@ -4,39 +4,25 @@ import {View } from 'react-native';
 import theme from './theme/theme' 
 import Appbar from './head/Appbar'  
 import { AntDesign } from '@expo/vector-icons';
-import Ping from 'react-native-ping';
+import p from 'ping.js';
 
 export default function Main() {
  const [t,st] = React.useState()
-  const p = async ()=>{
+  const ps = ()=>{
       try {
-    // /**
-    //  *
-    //  * Get RTT (Round-trip delay time)
-    //  *
-    //  * @static
-    //  * @param {string} ipAddress - For example : 8.8.8.8
-    //  * @param {Object} option - Some optional operations
-    //  * @param {number} option.timeout - timeout
-    //  * @returns
-    //  * @memberof Ping
-    //  */
-  //       console.log(Ping)
-  //   const ms = await Ping.start('114.114.114.114',{ timeout: 1000 });
-  //   console.log(ms);
-  const {
-    receivedNetworkSpeed,
-    sendNetworkSpeed,
-    receivedNetworkTotal,
-    sendNetworkTotal
-  } = await Ping.getTrafficStats();
-  st(receivedNetworkSpeed)
+        p.ping("https://google.com", (err, data) => {
+          if (err) {
+            console.log("error loading resource", err);
+          }
+          console.log(data)
+         st({ google: data });
+        });
   } catch (error) {
     console.log('special code',error.code, error.message);
   }
   }
   setTimeout(() => {
-   p() 
+   ps() 
   }, 3000);
   
   return (
